@@ -2,13 +2,12 @@
 public class Task {
     private String title;
     private String description;
+    private int id;
+    private TaskStatus status;
 
     public int getId() {
         return id;
     }
-
-    private int id;
-    private TaskStatus status;
 
     public Task(String title, String description, int id, TaskStatus status) {
         this.title = title;
@@ -65,8 +64,3 @@ public class Task {
     }
 }
 
-enum TaskStatus {
-    NEW,
-    IN_PROGRESS,
-    DONE
-}
