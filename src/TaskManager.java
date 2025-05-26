@@ -67,7 +67,6 @@ public class TaskManager {
         manager.removeEpicById(11);
 
         manager.removeTaskById(1);
-
     }
 
     public int generateId() {
@@ -132,9 +131,7 @@ public class TaskManager {
     public void updateEpic(Epic updatedEpic) {
         int id = updatedEpic.getId();
         if (epics.containsKey(id)) {
-            Epic existingEpic = epics.get(id);
-            existingEpic.setTitle(updatedEpic.getTitle());
-            existingEpic.setDescription(updatedEpic.getDescription());
+            epics.put(id, updatedEpic);
         } else {
             System.out.println("Задача с id " + id + " не найдена.");
         }
@@ -142,7 +139,12 @@ public class TaskManager {
 
     public void removeEpicById(int id) {
         if (epics.containsKey(id)) {
+            Epic epic = epics.get(id);
+            for (int subtaskId : epic.getSubtaskIds()) {
+                subtasks.remove(subtaskId);
+            }
             epics.remove(id);
+            System.out.println("Удалена задача с id " + id + " и все связанные с ней подзадачи");
         } else {
             System.out.println("Задача с id " + id + " не найдена.");
         }
@@ -212,6 +214,7 @@ public class TaskManager {
         int id = updatedSubtask.getId();
         if (subtasks.containsKey(id)) {
             subtasks.put(id, updatedSubtask);
+            calculateEpicStatus(updatedSubtask.getEpicId());
         } else {
             System.out.println("Задача с id " + id + " не найдена.");
         }
