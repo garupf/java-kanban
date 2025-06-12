@@ -1,3 +1,10 @@
+import manager.InMemoryTaskManager;
+import manager.Managers;
+import model.TaskStatus;
+import model.Epic;
+import model.Subtask;
+import model.Task;
+
 public class Main {
     public static void main(String[] args) {
         InMemoryTaskManager manager = Managers.getDefault();

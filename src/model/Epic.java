@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,10 @@ public class Epic extends Task {
 
     public Epic(String title, String description, int id, TaskStatus status) {
         super(title, description, id, status);
+    }
+
+    public Epic(String title, String description) {
+        super(title, description, TaskStatus.NEW); // или другой статус по умолчанию
     }
 
     public List<Integer> getSubtaskIds() {

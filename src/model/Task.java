@@ -1,9 +1,13 @@
+package model;
 
 public class Task {
     private String title;
     private String description;
     private int id;
     private TaskStatus status;
+
+    public Task(String testTask, String testDescription, TaskStatus taskStatus) {
+    }
 
     public int getId() {
         return id;
